@@ -75,6 +75,15 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <!-- 使用Maven插件直接将应用打包为一个Docker镜像 -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <repository>zlyxzq/istio-demo-service-${project.artifactId}</repository>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
