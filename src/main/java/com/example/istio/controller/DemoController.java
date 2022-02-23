@@ -34,9 +34,9 @@ public class DemoController {
     @ResponseBody
     @GetMapping(value = "/sayHello")
     public String sayHello(HttpServletRequest request) {
-        String env = request.getHeader("env");
-        log.info("header env:{}", env);
-        String current = "I'm " + appName + "(" + env + ")";
+        String headerEnv = request.getHeader("env");
+        String headerInfo = "header env(" + headerEnv + ")";
+        String current = headerInfo + ", I'm " + appName + "(" + env + ")";
         log.info(current);
         String response = "";
         if (next) {
