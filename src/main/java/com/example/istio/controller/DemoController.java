@@ -1,5 +1,7 @@
 package com.example.istio.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.example.istio.api.DemoApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,9 @@ public class DemoController {
 
     @ResponseBody
     @GetMapping(value = "/sayHello")
-    public String sayHello() {
+    public String sayHello(HttpServletRequest request) {
+        String env = request.getHeader("env");
+        log.info("header env:{}", env);
         String current = "I'm " + appName + "(" + env + ")";
         log.info(current);
         String response = "";
