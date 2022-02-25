@@ -1,5 +1,7 @@
 package com.example.istio.controller;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.istio.api.DemoApi;
@@ -35,6 +37,11 @@ public class DemoController {
     @GetMapping(value = "/sayHello")
     public String sayHello(HttpServletRequest request) {
         String headerEnv = request.getHeader("env");
+        Enumeration<String> headers = request.getHeaderNames();
+        while (headers.hasMoreElements()) {
+            String headerName = headers.nextElement();
+            log.info("{} -- > {}", headerName, request.getHeader(headerName));
+        }
         String headerInfo = "header env(" + headerEnv + ")";
         String current = headerInfo + ", I'm " + appName + "(" + env + ")";
         log.info(current);
