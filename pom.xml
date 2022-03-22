@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>istio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>istio</name>
-    <description>istio</description>
+    <name>spring-cloud-istio-demo</name>
+    <description>spring-cloud-istio-demo</description>
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
@@ -84,7 +84,7 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.3.6</version>
                 <configuration>
-                    <repository>zlyxzq/istio-demo-service-${project.artifactId}</repository>
+                    <repository>catface996/spring-cloud-istio-demo</repository>
                 </configuration>
             </plugin>
         </plugins>

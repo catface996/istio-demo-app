@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author by 大猫
  * @date 2022/2/22 5:43 PM
- * <p>
- * Copyright 2021  北京交个朋友数码科技有限公司, Inc. All rights reserved.
+ * catface996 出品
  */
 @Slf4j
 @RestController
