@@ -4,6 +4,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
+import brave.Tracer;
 import com.example.istio.api.DemoApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author by 大猫
- * @date 2022/2/22 5:43 PM
- * catface996 出品
+ * @date 2022/2/22 5:43 PM catface996 出品
  */
 @Slf4j
 @RestController
@@ -31,6 +31,9 @@ public class DemoController {
     private String env;
 
     private DemoApi demoApi;
+
+    @Autowired
+    private Tracer tracer;
 
     @ResponseBody
     @GetMapping(value = "/sayHello")
@@ -48,7 +51,8 @@ public class DemoController {
         if (next) {
             response = demoApi.sayHello();
         }
-        return current + " --> " + response;
+        String traceId = tracer.currentSpan().context().traceIdString();
+        return "TraceId: " + traceId + "  " + current + " --> " + response;
     }
 
     @Autowired
