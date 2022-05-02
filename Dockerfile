@@ -1,10 +1,11 @@
-FROM zlyxzq/centos7:v1
+FROM catface996/centos7-with-tools:v2
 VOLUME /tmp
 WORKDIR /app
 COPY /target/istio-0.0.1-SNAPSHOT.jar /root/app/example-app.jar
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN alias ll="ls -al"
 
 ENV JAVA_HOME /usr/local/java
 ENV PATH $PATH:$JAVA_HOME/bin
