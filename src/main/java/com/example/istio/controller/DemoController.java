@@ -39,12 +39,13 @@ public class DemoController {
     @GetMapping(value = "/sayHello")
     public String sayHello(HttpServletRequest request) {
         String headerEnv = request.getHeader("env");
+        String headerLessee = request.getHeader("lessee");
         Enumeration<String> headers = request.getHeaderNames();
         while (headers.hasMoreElements()) {
             String headerName = headers.nextElement();
             log.info("{} -- > {}", headerName, request.getHeader(headerName));
         }
-        String headerInfo = "header env(" + headerEnv + ")";
+        String headerInfo = "header env(" + headerEnv + "),lessee("+headerLessee+")";
         String current = headerInfo + ", I'm " + appName + "(" + env + ")";
         log.info(current);
         String response = "";
